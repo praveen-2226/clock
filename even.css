@@ -1,0 +1,193 @@
+/* Body: flat background with center alignment */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f1f1f1;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Card: animated entrance + hover scaling */
+#card {
+    background-color: #ffffff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 5px solid #3498db;
+    animation: slideIn 1s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Clock: ticking animation using subtle scaling */
+#clock {
+    font-size: 3.2em;
+    font-weight: 700;
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: inline-block;
+    animation: tick 1s infinite;
+}
+
+/* Message: animated pulse */
+#message {
+    font-size: 1.3em;
+    color: #ffffff;
+    background-color: #3498db;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 15px;
+    animation: pulse 2s infinite;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#message:hover {
+    background-color: #2980b9;
+}
+
+/* 🔽 Animations */
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tick {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(52, 152, 219, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+    }
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at 20% 30%, #ffefba, #ffffff 60%, #b2c9f7 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card with background image */
+#card {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80') center/cover, #222;
+    color: #fff;
+    padding: 32px 30px;
+    border-radius: 16px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 3px 16px rgba(30,40,70,0.28);
+    border: 2px solid transparent;
+    position: relative;
+    transition: box-shadow 0.3s, border-color 0.3s, transform 0.2s, background 0.4s;
+    /* image overlays for readability */
+    background-blend-mode: darken;
+}
+
+/* Semi-transparent color overlay for text readability (optional) */
+#card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 16px;
+    background: rgba(34,34,34,0.40);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.4s;
+}
+
+/* Bring content above overlay */
+#clock, #message, #card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glowing border and background darken on hover */
+#card:hover {
+    box-shadow: 0 6px 32px rgba(50,130,255,0.45);
+    border-color: #44f2ff;
+    transform: translateY(-8px) scale(1.04);
+}
+
+#card:hover::before {
+    background: rgba(34,34,34,0.60); /* Darker overlay on hover */
+}
+
+/* Message styling */
+#message {
+    font-size: 1.15rem;
+    padding: 7px 16px;
+    margin-top: 10px;
+    background: #333c;
+    border-radius: 8px;
+    display: inline-block;
+    color: #fff;
+    letter-spacing: 0.4px;
+    box-shadow: 0 2px 12px rgba(68,242,255,0.10);
+    transition: background 0.3s;
+}
+
+#card:hover #message {
+    background: #44f2ff33;
+    color: #222;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+
+    /* Background image covering the full page */
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') 
+                no-repeat center center fixed;
+    background-size: cover; /* Makes the image always cover the screen */
+    height: 100vh;
+
+    /* Optional: add overlay for better text visibility */
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* semi-transparent dark overlay */
+    z-index: -1; /* keep it behind content */
+}
